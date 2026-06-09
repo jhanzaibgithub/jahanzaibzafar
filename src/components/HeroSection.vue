@@ -62,7 +62,7 @@ onMounted(() => {
 };</pre>
       </div>
       <div class="metric-card floating-card">
-        <b>50+</b><span>Projects</span>
+        <b>30+</b><span>Projects</span>
         <b>25+</b><span>Clients</span>
       </div>
     </div>

@@ -37,7 +37,7 @@ onMounted(() => {
           <a class="email-link" :href="`mailto:${email}`">{{ email }}</a>
           <a class="contact-item whatsapp-link" :href="whatsappUrl" target="_blank" rel="noreferrer">
             <span class="contact-icon whatsapp-icon">WA</span>
-            <span>+92 306 764 8159</span>
+            <!-- <span>+92 306 764 8159</span> -->
             <b>WhatsApp</b>
           </a>
           <a class="contact-item" href="https://www.linkedin.com/in/jahanzaib-zafar-814ab4296/" target="_blank" rel="noreferrer">

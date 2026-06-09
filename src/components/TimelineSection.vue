@@ -6,49 +6,49 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const stats = [
-  ['5+', 'Years Exp'],
-  ['50+', 'Projects'],
+  ['5+', 'Years Experience'],
+  ['30+', 'Projects Delivered'],
   ['25+', 'Clients'],
-  ['3', 'Companies'],
+  ['3', 'Corporate Companies'],
 ];
 
 const entries = [
   // UPDATED
   {
-    range: '2022 - Present',
+    range: 'October 2025 – Present',
     role: 'Full Stack Developer',
-    company: 'Freelance - Upwork',
+    company: 'Dcodax Technology PVT LTD',
     badge: 'CURRENT',
     bullets: [
-      'Leading full-stack development of client applications across e-commerce, booking platforms, SaaS tools, and mobile backends.',
-      'Specialized in MERN stack, Laravel, and Vue.js with Firebase and Stripe integrations.',
+      'Architecting scalable MERN and Laravel web applications from concept to production deployment.',
+      'Collaborating directly with enterprise clients to translate business logic into robust database schemas and fast APIs.',
     ],
-    tags: ['React', 'Vue', 'Laravel', 'Node.js', 'MongoDB', 'Firebase'],
-  },
+tags: ["React", "Vue", "Laravel", "Node.js", "MongoDB", "Firebase"],  },
   {
-    range: '2021 - 2022',
-    role: 'Laravel Developer',
-    company: 'Dcodax Private Limited',
+    range: 'March 2023 – June 2025',
+    role: 'Senior Web Developer',
+    company: 'Virtual Netz Software Company',
     bullets: [
-      'Developed and maintained client-facing web applications and Android app documentation systems.',
-      'Produced pixel-accurate HTML deliverables and collaborated on full-stack Laravel and MERN projects.',
+      'Architected and delivered high-traffic e-commerce platforms and custom business dashboards using Laravel, React.js, and MySQL.',
+      'Optimized complex database queries and implemented caching strategies, improving application page-load speed by over 40%.',
+      'Built and integrated secure, custom payment gateway APIs and third-party accounting software.',
     ],
-    tags: ['Laravel', 'MySQL', 'PHP', 'HTML/CSS', 'JavaScript'],
+    tags: ["HTML", "CSS", "JavaScript", "MERN", "Laravel", "MySQL", "REST APIs"],
   },
   {
-    range: '2020 - 2021',
-    role: 'Junior Laravel Developer',
-    company: 'Freelance (Early Career)',
+    range: 'July 2021 – July 2022',
+    role: 'PHP / Laravel Developer',
+    company: 'House of Code',
     bullets: [
-      'Built landing pages, business websites, and small web apps for local clients.',
-      'Applied modern CSS layouts, responsive design principles, and JavaScript fundamentals to deliver clean, fast projects.',
+      'Led an agile team of developers to design, build, and deploy enterprise-level Laravel applications across multiple industries.',
+      'Standardized code review processes and database architecture guidelines, reducing post-deployment bugs by 25%.',
+      'Managed client communication, translating complex business requirements into clear technical roadmaps.',
     ],
-    tags: ['HTML', 'CSS', 'JavaScript', 'Laravel', 'GitHub Pages'],
-  },
+tags: ["HTML", "CSS", "Bootstrap", "PHP", "JavaScript", "Laravel", "Git"],  },
   {
-    range: '2019 - 2023',
-    role: 'BS Computer Science',
-    company: 'FAST NUCES University',
+    range: '2016 – 2020',
+    role: 'Bachelor of Computer Science (BCompSc)',
+    company: 'Islamia University Bahawalpur (IUB)',
     bullets: [
       "Completed Bachelor's in Computer Science with focus on software engineering, databases, and web technologies.",
       'Worked on multiple academic projects using modern web stacks.',

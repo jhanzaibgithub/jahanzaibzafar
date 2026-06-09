@@ -37,7 +37,7 @@ const projects = [
   {
     ...projectAssets('islegit', 11),
     title: 'IcLegit',
-    url: '#',
+    url: 'http://isitlegit.co/',
     github: '#',
     category: 'Tool',
     label: 'Tool',
@@ -47,9 +47,9 @@ const projects = [
     span: 'tall',
   },
   {
-    ...projectAssets('domain name generater', 3),
+    ...projectAssets('domain-name-generater', 3),
     title: 'Domain Name Generator',
-    url: '#',
+    url: 'https://3sname.com/',
     github: '#',
     category: 'Tool',
     label: 'Tool',
@@ -59,10 +59,9 @@ const projects = [
     span: '',
   },
   {
-    ...projectAssets('gifted texi', 9),
+    ...projectAssets('gifted-texi', 9),
     title: 'Gifted Taxi & Tours',
     url: 'https://giftedtaxiandtours.com',
-    github: '#',
     category: 'Web',
     label: 'Booking',
     description:
@@ -74,7 +73,7 @@ const projects = [
     ...projectAssets('blog_site', 6),
     title: 'Blog Platform',
     url: '#',
-    github: '#',
+    github: 'https://github.com/jhanzaibgithub/Blog-site-Vue-js-Laravel.git',
     category: 'Web',
     label: 'Web App',
     description:
@@ -83,9 +82,9 @@ const projects = [
     span: 'tall',
   },
   {
-    ...projectAssets('hosting panel', 6),
+    ...projectAssets('hosting-panel', 6),
     title: 'Hosting Panel',
-    url: '#',
+    url: 'https://hpanel.pixelz360.com.au/',
     github: '#',
     category: 'Web',
     label: 'Panel',
