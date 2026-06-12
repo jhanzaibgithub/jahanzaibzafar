@@ -3,7 +3,8 @@ import { onMounted, ref } from 'vue';
 import gsap from 'gsap';
 
 const role = ref('Full Stack Developer');
-const roles = ['Full Stack Developer', 'Laravel Engineer', 'Vue.js Builder', 'Node.js API Specialist'];
+const roles = ['Full Stack Developer (Laravel, MERN, Vue.js)', 'Laravel Engineer', 'Vue.js Builder', 'Node.js API Specialist'];
+const base = import.meta.env.BASE_URL;
 
 function scrollToProjects() {
   document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
@@ -47,12 +48,24 @@ onMounted(() => {
         I build polished web products with Vue, Laravel, Node.js, API integrations, and database systems that stay stable after launch.
       </p>
       <div class="hero-actions">
-        <button class="btn primary" @click="scrollToProjects">View Work</button>
-        <!-- UPDATED -->
-        <a class="btn ghost" href="mailto:jahanzaibzafar.dev@gmail.com">Contact Me</a>
+        <a class="btn primary" :href="`${base}jahanzaib-developer.pdf`" download="Jahanzaib-Zafar-CV.pdf">Download CV</a>
+        <button class="btn ghost" @click="scrollToProjects">View Projects</button>
+        <a class="btn ghost" href="https://github.com/jhanzaibgithub" target="_blank" rel="noreferrer">View GitHub</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/jahanzaib-zafar-814ab4296/" target="_blank" rel="noreferrer">View LinkedIn</a>
       </div>
     </div>
-    <div class="hero-orbit" aria-hidden="true">
+    <div class="hero-orbit">
+      <figure class="profile-card floating-card">
+        <img
+          :src="`${base}profile.svg`"
+          alt="Jahanzaib Zafar Full Stack Developer"
+          width="280"
+          height="280"
+          loading="eager"
+          fetchpriority="high"
+        />
+        <figcaption>Jahanzaib Zafar</figcaption>
+      </figure>
       <div class="code-card floating-card">
         <span>Developer.js</span>
         <pre>const developer = {

@@ -31,7 +31,7 @@ onMounted(() => {
       <div>
         <span class="eyebrow">Contact</span>
         <h2 class="section-title">Let's build <em>something durable.</em></h2>
-        <p>Open to freelance projects that need thoughtful execution, reliable code, and clear communication.</p>
+        <p>Open to work opportunities that need thoughtful execution, reliable code, and clear communication.</p>
         <!-- UPDATED -->
         <div class="contact-list">
           <a class="email-link" :href="`mailto:${email}`">{{ email }}</a>
@@ -58,7 +58,7 @@ onMounted(() => {
             <span>View Profile</span>
           </a>
         </div>
-        <span class="availability">Open to freelance projects</span>
+        <span class="availability">Open to work opportunities</span>
       </div>
       <div class="contact-actions">
         <!-- UPDATED -->

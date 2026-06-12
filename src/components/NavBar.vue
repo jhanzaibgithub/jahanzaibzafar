@@ -4,6 +4,7 @@ import { onMounted, onBeforeUnmount, ref } from 'vue';
 const isOpen = ref(false);
 const isScrolled = ref(false);
 const activeSection = ref('home');
+const cvUrl = `${import.meta.env.BASE_URL}jahanzaib-developer.pdf`;
 let ticking = false;
 let observer;
 
@@ -13,6 +14,7 @@ const links = [
   ['projects', 'Projects'],
   ['skills', 'Skills'],
   ['experience', 'Experience'],
+  ['resume', 'Resume'],
   ['contact', 'Contact'],
 ];
 
@@ -59,22 +61,31 @@ onBeforeUnmount(() => {
       <span class="logo-name">Jahanzaib <b>Zafar</b></span>
     </a>
     <nav class="desktop-nav" aria-label="Primary navigation">
-      <button
+      <a
         v-for="[id, label] in links"
         :key="id"
+        :href="`#${id}`"
         class="nav-link"
         :class="{ active: activeSection === id }"
         @click="goTo(id)"
       >
         {{ label }}
-      </button>
+      </a>
     </nav>
-    <button class="hire-btn" @click="goTo('contact')">Hire Me</button>
+    <div class="header-actions">
+      <a class="header-social" href="https://github.com/jhanzaibgithub" target="_blank" rel="noreferrer" aria-label="Jahanzaib Zafar GitHub">GitHub</a>
+      <a class="header-social" href="https://www.linkedin.com/in/jahanzaib-zafar-814ab4296/" target="_blank" rel="noreferrer" aria-label="Jahanzaib Zafar LinkedIn">LinkedIn</a>
+      <a class="hire-btn" :href="cvUrl" download="Jahanzaib-Zafar-CV.pdf">Download CV</a>
+      <button class="hire-btn" @click="goTo('contact')">Hire Me</button>
+    </div>
     <button class="menu-btn" :aria-expanded="isOpen" aria-label="Open menu" @click="isOpen = !isOpen">
       <span></span><span></span>
     </button>
     <div class="mobile-menu" :class="{ open: isOpen }">
-      <button v-for="[id, label] in links" :key="id" @click="goTo(id)">{{ label }}</button>
+      <a v-for="[id, label] in links" :key="id" :href="`#${id}`" @click="goTo(id)">{{ label }}</a>
+      <a :href="cvUrl" download="Jahanzaib-Zafar-CV.pdf">Download CV</a>
+      <a href="https://github.com/jhanzaibgithub" target="_blank" rel="noreferrer">GitHub</a>
+      <a href="https://www.linkedin.com/in/jahanzaib-zafar-814ab4296/" target="_blank" rel="noreferrer">LinkedIn</a>
     </div>
   </header>
 </template>
