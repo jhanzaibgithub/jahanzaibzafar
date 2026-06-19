@@ -6,10 +6,12 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 // UPDATED
-const email = 'jahanzaibzafar.dev@gmail.com';
+const email = 'jahanzaibzafar.dev63@gmail.com';
+const whatsappNumber = '+92 306 764 8159';
 const whatsappUrl =
   'https://wa.me/923067648159?text=Hi%20Jahanzaib%2C%20I%20found%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project.';
 const socialLinks = [
+  ['WhatsApp', 'WA', whatsappUrl],
   ['LinkedIn', 'in', 'https://www.linkedin.com/in/jahanzaib-zafar-814ab4296/'],
   ['GitHub', 'GH', 'https://github.com/jhanzaibgithub'],
   ['Upwork', 'Up', 'https://www.upwork.com/freelancers/~017d9280669d695f18?viewMode=1&mp_source=share'],
@@ -37,8 +39,8 @@ onMounted(() => {
           <a class="email-link" :href="`mailto:${email}`">{{ email }}</a>
           <a class="contact-item whatsapp-link" :href="whatsappUrl" target="_blank" rel="noreferrer">
             <span class="contact-icon whatsapp-icon">WA</span>
-            <!-- <span>+92 306 764 8159</span> -->
             <b>WhatsApp</b>
+            <span>{{ whatsappNumber }}</span>
           </a>
           <a class="contact-item" href="https://www.linkedin.com/in/jahanzaib-zafar-814ab4296/" target="_blank" rel="noreferrer">
             <span class="contact-icon">in</span>
@@ -76,6 +78,7 @@ onMounted(() => {
           >
             <span>{{ icon }}</span>
             <b>{{ label }}</b>
+            <small v-if="label === 'WhatsApp'">{{ whatsappNumber }}</small>
           </a>
         </div>
       </div>

@@ -391,23 +391,101 @@ img {
 
 .profile-card {
   justify-self: start;
-  width: min(100%, 260px);
+  width: min(100%, 286px);
   padding: 14px;
+  overflow: hidden;
+  background:
+    linear-gradient(145deg, rgba(110, 231, 200, 0.12), transparent 42%),
+    rgba(8, 22, 30, 0.82);
+}
+
+.profile-card::before {
+  content: "";
+  position: absolute;
+  inset: -35%;
+  z-index: -1;
+  background: conic-gradient(from 180deg, transparent, rgba(110, 231, 200, 0.35), transparent 34%);
+  animation: profileHalo 7s linear infinite;
+  opacity: 0.65;
+}
+
+.profile-image-frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid rgba(110, 231, 200, 0.2);
+  background:
+    radial-gradient(circle at 50% 8%, rgba(110, 231, 200, 0.24), transparent 32%),
+    linear-gradient(160deg, #061117, #0c2630 62%, #061015);
+  box-shadow: inset 0 -60px 70px rgba(2, 8, 12, 0.5);
+}
+
+.profile-image-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 25%, rgba(255, 255, 255, 0.2) 44%, transparent 62%);
+  transform: translateX(-120%);
+  animation: profileShine 4.8s ease-in-out infinite;
+  pointer-events: none;
 }
 
 .profile-card img {
   width: 100%;
-  aspect-ratio: 1;
-  border-radius: 8px;
+  aspect-ratio: 4 / 5;
+  display: block;
   object-fit: cover;
-  background: rgba(255, 255, 255, 0.04);
+  object-position: center 12%;
+  filter: saturate(1.06) contrast(1.04);
+  transition: transform 260ms ease, filter 260ms ease;
+}
+
+.profile-card:hover img {
+  transform: scale(1.025);
+  filter: saturate(1.1) contrast(1.05);
+}
+
+.profile-status {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  border: 1px solid rgba(110, 231, 200, 0.32);
+  border-radius: 999px;
+  padding: 6px 10px;
+  background: rgba(4, 16, 20, 0.78);
+  color: var(--accent);
+  font-size: 0.7rem;
+  font-weight: 800;
+  backdrop-filter: blur(8px);
+}
+
+.profile-status::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 6px;
+  border-radius: 50%;
+  background: #25d366;
+  box-shadow: 0 0 12px rgba(37, 211, 102, 0.8);
 }
 
 .profile-card figcaption {
-  margin-top: 10px;
+  display: grid;
+  gap: 3px;
+  margin-top: 12px;
+}
+
+.profile-card figcaption strong {
   color: var(--accent);
   font-family: var(--font-head);
-  font-size: 0.95rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.profile-card figcaption span {
+  color: var(--muted);
+  font-size: 0.78rem;
   font-weight: 700;
 }
 
@@ -468,6 +546,23 @@ img {
   }
   50% {
     transform: translate3d(0, -14px, 0);
+  }
+}
+
+@keyframes profileHalo {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes profileShine {
+  0%,
+  52% {
+    transform: translateX(-120%);
+  }
+  78%,
+  100% {
+    transform: translateX(120%);
   }
 }
 
@@ -1313,6 +1408,12 @@ img {
   font-size: 0.84rem;
 }
 
+.social-icon-link small {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
 .social-icon-link:hover {
   border-color: var(--accent-line);
   background: rgba(110, 231, 200, 0.08);
@@ -1332,6 +1433,11 @@ img {
 .social-upwork span {
   background: rgba(20, 168, 0, 0.14);
   color: #8ee667;
+}
+
+.social-whatsapp span {
+  background: rgba(37, 211, 102, 0.14);
+  color: #25d366;
 }
 
 .site-footer {
@@ -1421,8 +1527,8 @@ img {
   }
 
   .profile-card {
-    justify-self: stretch;
-    width: 100%;
+    justify-self: center;
+    width: min(100%, 320px);
   }
 
   .code-card,

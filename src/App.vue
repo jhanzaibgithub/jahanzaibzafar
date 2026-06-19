@@ -11,7 +11,7 @@ import TimelineSection from './components/TimelineSection.vue';
 import ContactSection from './components/ContactSection.vue';
 
 const siteUrl = 'https://jhanzaibgithub.github.io/jahanzaibzafar/';
-const profileImage = `${siteUrl}profile.svg`;
+const profileImage = `${siteUrl}profile-pic.png`;
 const cvUrl = `${siteUrl}jahanzaib-developer.pdf`;
 const githubUrl = 'https://github.com/jhanzaibgithub';
 const linkedInUrl = 'https://www.linkedin.com/in/jahanzaib-zafar-814ab4296/';
@@ -106,7 +106,7 @@ useHead(
           jobTitle: 'Full Stack Developer',
           url: siteUrl,
           image: profileImage,
-          email: 'mailto:jahanzaibzafar.dev@gmail.com',
+          email: 'mailto:jahanzaibzafar.dev63@gmail.com',
           description,
           knowsAbout: ['Laravel', 'MERN Stack', 'Vue.js', 'Node.js', 'React', 'PHP', 'REST APIs', 'MySQL', 'MongoDB'],
           sameAs: [githubUrl, linkedInUrl, siteUrl],
@@ -167,7 +167,7 @@ useHead(
     <div class="footer-socials">
       <a href="https://github.com/jhanzaibgithub" target="_blank" rel="noreferrer">GitHub</a>
       <a href="https://www.linkedin.com/in/jahanzaib-zafar-814ab4296/" target="_blank" rel="noreferrer">LinkedIn</a>
-      <a href="/jahanzaibzafar/jahanzaib-developer.pdf" download="Jahanzaib-Zafar-CV.pdf">Download CV</a>
+      <a :href="cvUrl" download="Jahanzaib-Zafar-CV.pdf">Download CV</a>
       <a href="https://www.upwork.com/freelancers/~017d9280669d695f18?viewMode=1&mp_source=share" target="_blank" rel="noreferrer">Upwork</a>
     </div>
     <span>(c) 2026 Jahanzaib Zafar. All rights reserved.</span>

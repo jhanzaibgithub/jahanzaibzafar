@@ -56,15 +56,21 @@ onMounted(() => {
     </div>
     <div class="hero-orbit">
       <figure class="profile-card floating-card">
-        <img
-          :src="`${base}profile.svg`"
-          alt="Jahanzaib Zafar Full Stack Developer"
-          width="280"
-          height="280"
-          loading="eager"
-          fetchpriority="high"
-        />
-        <figcaption>Jahanzaib Zafar</figcaption>
+        <div class="profile-image-frame">
+          <img
+            :src="`${base}profile-pic.png`"
+            alt="Jahanzaib Zafar Full Stack Developer"
+            width="280"
+            height="350"
+            loading="eager"
+            fetchpriority="high"
+          />
+          <span class="profile-status">Available</span>
+        </div>
+        <figcaption>
+          <strong>Jahanzaib Zafar</strong>
+          <span>Full Stack Developer</span>
+        </figcaption>
       </figure>
       <div class="code-card floating-card">
         <span>Developer.js</span>
