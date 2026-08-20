@@ -6,7 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const stats = [
-  ['5+', 'Years Experience'],
+  ['3+', 'Years Experience'],
   ['30+', 'Projects Delivered'],
   ['25+', 'Clients'],
   ['3', 'Corporate Companies'],
@@ -26,8 +26,8 @@ const entries = [
 tags: ["React", "Vue", "Laravel", "Node.js", "MongoDB", "Firebase"],  },
   {
     range: 'March 2023 – June 2025',
-    role: 'Senior Web Developer',
-    company: 'Virtual Netz Software Company',
+    role: 'Full Stack Developer',
+    company: 'Crexed Software Company',
     bullets: [
       'Architected and delivered high-traffic e-commerce platforms and custom business dashboards using Laravel, React.js, and MySQL.',
       'Optimized complex database queries and implemented caching strategies, improving application page-load speed by over 40%.',
@@ -38,7 +38,7 @@ tags: ["React", "Vue", "Laravel", "Node.js", "MongoDB", "Firebase"],  },
   {
     range: 'July 2021 – July 2022',
     role: 'PHP / Laravel Developer',
-    company: 'House of Code',
+    company: 'Pixelz360',
     bullets: [
       'Led an agile team of developers to design, build, and deploy enterprise-level Laravel applications across multiple industries.',
       'Standardized code review processes and database architecture guidelines, reducing post-deployment bugs by 25%.',
