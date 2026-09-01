@@ -27,12 +27,22 @@ const groups = [
     ],
   },
   {
-    title: 'Database & Tools',
+    title: 'Database & Caching',
     skills: [
       ['MySQL', 88],
       ['MongoDB', 76],
       ['Firebase', 72],
+      ['Redis', 78],
+      ['PostgreSQL', 74],
+    ],
+  },
+  {
+    title: 'DevOps & Tools',
+    skills: [
+      ['Docker', 82],
+      ['CI/CD Pipelines', 80],
       ['Git', 82],
+      ['Server Management', 76],
       ['Cloud Hosting', 76],
     ],
   },

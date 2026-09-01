@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onMounted, ref } from 'vue';
+import { computed, onMounted, onBeforeUnmount, ref } from 'vue';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ProjectModal from './ProjectModal.vue';
@@ -146,7 +146,16 @@ function closeModal() {
   modalOpen.value = false;
 }
 
+let autoCarouselInterval;
+
 onMounted(() => {
+  // Auto-carousel: rotate projects every 5 seconds
+  autoCarouselInterval = setInterval(() => {
+    if (!isDraggingCarousel.value && !modalOpen.value) {
+      nextProjects();
+    }
+  }, 5000);
+
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -165,6 +174,12 @@ onMounted(() => {
     duration: 0.7,
     scrollTrigger: { trigger: '.projects-title', start: 'top 75%' },
   });
+});
+
+onBeforeUnmount(() => {
+  if (autoCarouselInterval) {
+    clearInterval(autoCarouselInterval);
+  }
 });
 </script>
 
@@ -209,7 +224,6 @@ onMounted(() => {
             </div>
             <span class="project-index">{{ String(project.originalIndex + 1).padStart(2, '0') }}</span>
             <div class="project-actions">
-              <a :href="project.github" aria-label="GitHub repository" @click.stop>Git</a>
               <a :href="project.url" target="_blank" rel="noreferrer" aria-label="Live demo" @click.stop>Live</a>
             </div>
             <div class="project-info">

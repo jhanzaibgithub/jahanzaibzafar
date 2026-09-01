@@ -1,7 +1,7 @@
 <script setup>
 import { computed, onMounted, onBeforeUnmount, ref } from 'vue';
 import { useHead } from '@vueuse/head';
-import GalaxyCanvas from './components/GalaxyCanvas.vue';
+// import GalaxyCanvas from './components/GalaxyCanvas.vue'; // Disabled animated background
 import NavBar from './components/NavBar.vue';
 import HeroSection from './components/HeroSection.vue';
 import AboutSection from './components/AboutSection.vue';
@@ -14,7 +14,7 @@ const siteUrl = 'https://jhanzaibgithub.github.io/jahanzaibzafar/';
 const profileImage = `${siteUrl}profile-pic.png`;
 const cvUrl = `${siteUrl}jahanzaib-developer.pdf`;
 const githubUrl = 'https://github.com/jhanzaibgithub';
-const linkedInUrl = 'https://www.linkedin.com/in/jahanzaib-zafar-814ab4296/';
+const linkedInUrl = 'https://linkedin.com/in/jahanzaibzafar';
 const description =
   'Jahanzaib Zafar is a Full Stack Developer building Laravel, MERN, Vue.js, Node.js, API, dashboard, and production web applications.';
 
@@ -138,7 +138,7 @@ useHead(
 </script>
 
 <template>
-  <GalaxyCanvas />
+  <!-- Galaxy background animation removed for cleaner text visibility -->
   <NavBar />
   <main>
     <HeroSection />
@@ -166,7 +166,7 @@ useHead(
     <p>Crafted with precision by Jahanzaib Zafar</p>
     <div class="footer-socials">
       <a href="https://github.com/jhanzaibgithub" target="_blank" rel="noreferrer">GitHub</a>
-      <a href="https://www.linkedin.com/in/jahanzaib-zafar-814ab4296/" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a href="https://linkedin.com/in/jahanzaibzafar" target="_blank" rel="noreferrer">LinkedIn</a>
       <a :href="cvUrl" download="Jahanzaib-Zafar-CV.pdf">Download CV</a>
       <a href="https://www.upwork.com/freelancers/~017d9280669d695f18?viewMode=1&mp_source=share" target="_blank" rel="noreferrer">Upwork</a>
     </div>

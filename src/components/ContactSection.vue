@@ -10,11 +10,14 @@ const email = 'jahanzaibzafar.dev63@gmail.com';
 const whatsappNumber = '+92 306 764 8159';
 const whatsappUrl =
   'https://wa.me/923067648159?text=Hi%20Jahanzaib%2C%20I%20found%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project.';
+const upworkUrl = 'https://www.upwork.com/freelancers/jahanzaibzafar01?mp_source=share';
+
 const socialLinks = [
-  ['WhatsApp', 'WA', whatsappUrl],
-  ['LinkedIn', 'in', 'https://www.linkedin.com/in/jahanzaib-zafar-814ab4296/'],
+  ['Gmail', '✉', `mailto:${email}`],
+  ['LinkedIn', 'in', 'https://linkedin.com/in/jahanzaibzafar'],
   ['GitHub', 'GH', 'https://github.com/jhanzaibgithub'],
-  ['Upwork', 'Up', 'https://www.upwork.com/freelancers/~017d9280669d695f18?viewMode=1&mp_source=share'],
+  ['Upwork', 'Up', upworkUrl],
+  ['WhatsApp', 'WA', whatsappUrl],
 ];
 
 onMounted(() => {
@@ -34,37 +37,12 @@ onMounted(() => {
         <span class="eyebrow">Contact</span>
         <h2 class="section-title">Let's build <em>something durable.</em></h2>
         <p>Open to work opportunities that need thoughtful execution, reliable code, and clear communication.</p>
-        <!-- UPDATED -->
-        <div class="contact-list">
-          <a class="email-link" :href="`mailto:${email}`">{{ email }}</a>
-          <a class="contact-item whatsapp-link" :href="whatsappUrl" target="_blank" rel="noreferrer">
-            <span class="contact-icon whatsapp-icon">WA</span>
-            <b>WhatsApp</b>
-            <span>{{ whatsappNumber }}</span>
-          </a>
-          <a class="contact-item" href="https://www.linkedin.com/in/jahanzaib-zafar-814ab4296/" target="_blank" rel="noreferrer">
-            <span class="contact-icon">in</span>
-            <span>linkedin.com/in/jahanzaib-zafar-814ab4296</span>
-          </a>
-          <a class="contact-item" href="https://github.com/jhanzaibgithub" target="_blank" rel="noreferrer">
-            <span class="contact-icon">GH</span>
-            <span>jhanzaibgithub</span>
-          </a>
-          <a
-            class="contact-item"
-            href="https://www.upwork.com/freelancers/~017d9280669d695f18?viewMode=1&mp_source=share"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <span class="contact-icon upwork-icon">Up</span>
-            <span>View Profile</span>
-          </a>
-        </div>
-        <span class="availability">Open to work opportunities</span>
+        <!-- Contact via Email -->
+        <a class="email-link" :href="`mailto:${email}`">{{ email }}</a>
+        <span class="availability">Available for freelance projects & full-time roles</span>
       </div>
       <div class="contact-actions">
-        <!-- UPDATED -->
-        <a class="btn primary" :href="`mailto:${email}`">Send Message</a>
+        <!-- Social Links -->
         <div class="social-links">
           <a
             v-for="[label, icon, url] in socialLinks"
@@ -72,13 +50,12 @@ onMounted(() => {
             class="social-icon-link"
             :class="`social-${label.toLowerCase()}`"
             :href="url"
-            target="_blank"
-            rel="noreferrer"
+            :target="label === 'Gmail' ? '' : '_blank'"
+            :rel="label === 'Gmail' ? '' : 'noreferrer'"
             :aria-label="label"
           >
             <span>{{ icon }}</span>
             <b>{{ label }}</b>
-            <small v-if="label === 'WhatsApp'">{{ whatsappNumber }}</small>
           </a>
         </div>
       </div>

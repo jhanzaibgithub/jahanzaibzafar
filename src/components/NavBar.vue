@@ -74,7 +74,7 @@ onBeforeUnmount(() => {
     </nav>
     <div class="header-actions">
       <a class="header-social" href="https://github.com/jhanzaibgithub" target="_blank" rel="noreferrer" aria-label="Jahanzaib Zafar GitHub">GitHub</a>
-      <a class="header-social" href="https://www.linkedin.com/in/jahanzaib-zafar-814ab4296/" target="_blank" rel="noreferrer" aria-label="Jahanzaib Zafar LinkedIn">LinkedIn</a>
+      <a class="header-social" href="https://linkedin.com/in/jahanzaibzafar" target="_blank" rel="noreferrer" aria-label="Jahanzaib Zafar LinkedIn">LinkedIn</a>
       <a class="hire-btn" :href="cvUrl" download="Jahanzaib-Zafar-CV.pdf">Download CV</a>
       <button class="hire-btn" @click="goTo('contact')">Hire Me</button>
     </div>
@@ -85,7 +85,7 @@ onBeforeUnmount(() => {
       <a v-for="[id, label] in links" :key="id" :href="`#${id}`" @click="goTo(id)">{{ label }}</a>
       <a :href="cvUrl" download="Jahanzaib-Zafar-CV.pdf">Download CV</a>
       <a href="https://github.com/jhanzaibgithub" target="_blank" rel="noreferrer">GitHub</a>
-      <a href="https://www.linkedin.com/in/jahanzaib-zafar-814ab4296/" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a href="https://linkedin.com/in/jahanzaibzafar" target="_blank" rel="noreferrer">LinkedIn</a>
     </div>
   </header>
 </template>

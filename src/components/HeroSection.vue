@@ -51,7 +51,7 @@ onMounted(() => {
         <a class="btn primary" :href="`${base}jahanzaib-developer.pdf`" download="Jahanzaib-Zafar-CV.pdf">Download CV</a>
         <button class="btn ghost" @click="scrollToProjects">View Projects</button>
         <a class="btn ghost" href="https://github.com/jhanzaibgithub" target="_blank" rel="noreferrer">View GitHub</a>
-        <a class="btn ghost" href="https://www.linkedin.com/in/jahanzaib-zafar-814ab4296/" target="_blank" rel="noreferrer">View LinkedIn</a>
+        <a class="btn ghost" href="https://linkedin.com/in/jahanzaibzafar" target="_blank" rel="noreferrer">View LinkedIn</a>
       </div>
     </div>
     <div class="hero-orbit">

@@ -1,10 +1,4 @@
 <script setup>
-import { onMounted } from 'vue';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
-
 const stats = [
   ['3+', 'Years Experience'],
   ['30+', 'Projects Delivered'],
@@ -49,6 +43,7 @@ tags: ["HTML", "CSS", "Bootstrap", "PHP", "JavaScript", "Laravel", "Git"],  },
     range: '2016 – 2020',
     role: 'Bachelor of Computer Science (BCompSc)',
     company: 'Islamia University Bahawalpur (IUB)',
+    badge: 'EDUCATION',
     bullets: [
       "Completed Bachelor's in Computer Science with focus on software engineering, databases, and web technologies.",
       'Worked on multiple academic projects using modern web stacks.',
@@ -57,20 +52,6 @@ tags: ["HTML", "CSS", "Bootstrap", "PHP", "JavaScript", "Laravel", "Git"],  },
   },
 ];
 
-onMounted(() => {
-  gsap.from('.timeline-title', {
-    clipPath: 'inset(0 100% 0 0)',
-    duration: 0.7,
-    scrollTrigger: { trigger: '.timeline-title', start: 'top 75%' },
-  });
-  gsap.from('.timeline-entry', {
-    opacity: 0,
-    x: -60,
-    duration: 0.6,
-    stagger: 0.14,
-    scrollTrigger: { trigger: '.timeline-track', start: 'top 70%' },
-  });
-});
 </script>
 
 <template>
@@ -89,7 +70,7 @@ onMounted(() => {
       <article v-for="entry in entries" :key="entry.role + entry.range" class="timeline-entry glass-card">
         <span class="range">{{ entry.range }}</span>
         <!-- UPDATED -->
-        <span v-if="entry.badge" class="current-badge">{{ entry.badge }}</span>
+        <span v-if="entry.badge" :class="entry.badge === 'EDUCATION' ? 'education-badge' : 'current-badge'">{{ entry.badge }}</span>
         <h3>{{ entry.role }}</h3>
         <strong>{{ entry.company }}</strong>
         <ul>
