@@ -1,55 +1,45 @@
 <script setup>
-import { onMounted } from 'vue';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { onMounted, ref } from 'vue';
 
-gsap.registerPlugin(ScrollTrigger);
-
-const stack = ['Vue', 'React', 'Node', 'Laravel', 'PHP', 'MySQL', 'MongoDB', 'Firebase', 'REST APIs', 'Git'];
+const sectionRef = ref(null);
 
 onMounted(() => {
-  gsap.from('.about-title', {
-    clipPath: 'inset(0 100% 0 0)',
-    duration: 0.7,
-    scrollTrigger: { trigger: '.about-title', start: 'top 75%' },
-  });
-  gsap.from('.about-card, .stack-item', {
-    opacity: 0,
-    y: 30,
-    duration: 0.5,
-    stagger: 0.06,
-    scrollTrigger: { trigger: '#about', start: 'top 65%' },
-  });
-  gsap.to('.about-glow', {
-    y: -80,
-    scrollTrigger: { trigger: '#about', start: 'top bottom', end: 'bottom top', scrub: true },
-  });
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-visible'));
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 },
+  );
+  if (sectionRef.value) observer.observe(sectionRef.value);
 });
 </script>
 
 <template>
-  <section id="about" class="about section-shell">
-    <div>
-      <span class="eyebrow">About</span>
-      <h2 class="section-title about-title">Practical engineering,<br /><em>premium execution</em></h2>
-      <div class="about-card glass-card">
+  <section id="about" class="about section-shell" ref="sectionRef">
+    <div class="about-grid">
+      <div class="reveal">
+        <span class="section-label">About</span>
+        <h2 class="section-heading">How I think about <em>building software</em></h2>
+      </div>
+
+      <div class="about-text reveal reveal-delay-1">
         <p>
-          I am a full stack developer focused on shipping clean, durable products for businesses that need more than a surface-level website.
+          As a senior full-stack engineer, I bridge high-level domain objectives with low-level execution integrity.
+          I deconstruct complex business logic, identify systemic bottlenecks, and design decoupled, maintainable software architectures engineered for fault tolerance, security, and long-term scalabilty.
         </p>
         <p>
-          My work spans Laravel backends, Vue and React interfaces, REST APIs, dashboards, booking flows, ecommerce, hosting tools, and automation-heavy platforms.
-        </p>
-        <p>
-          I keep the build process direct: understand the workflow, design the right architecture, implement carefully, and leave the project maintainable.
+          My technical foundation centers around <strong>Laravel, PHP, and Node.js microservices</strong> on the backend, complemented by <strong>Vue.js, React, and Next.js</strong> on the frontend, with <strong>MySQL, MongoDB, and Redis</strong> powering data layers. I specialize in Stripe payment gateway orchestration, custom multi-tenant portal development, devops server provisioning (cPanel/WHM/Plesk/Docker), and bulletproof REST API integrations.
         </p>
       </div>
-    </div>
-    <div class="stack-panel glass-card">
-      <span class="panel-label">Core Expertise</span>
-      <div class="stack-grid">
-        <span v-for="item in stack" :key="item" class="stack-item">{{ item }}</span>
+
+      <div class="about-highlight reveal reveal-delay-2">
+        I don't ship throwaway prototypes. I engineer resilient, battle-tested production platforms built to scale.
       </div>
     </div>
-    <div class="about-glow" aria-hidden="true"></div>
   </section>
 </template>

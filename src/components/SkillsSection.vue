@@ -1,91 +1,100 @@
 <script setup>
-import { onMounted } from 'vue';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { onMounted, ref } from 'vue';
 
-gsap.registerPlugin(ScrollTrigger);
+const sectionRef = ref(null);
 
-const groups = [
-  {
-    title: 'Frontend',
-    skills: [
-      ['HTML5', 92],
-      ['CSS3', 88],
-      ['JavaScript', 86],
-      ['Vue.js', 84],
-      ['React', 76],
-    ],
-  },
+const categories = [
   {
     title: 'Backend',
-    skills: [
-      ['PHP', 86],
-      ['Laravel', 84],
-      ['Node.js', 80],
-      ['Express.js', 78],
-      ['REST APIs', 86],
+    tiers: [
+      { label: 'Primary', tier: 'primary', skills: ['Laravel', 'PHP', 'REST APIs', 'Stripe Integration', 'Node.js', 'Express.js'] },
     ],
   },
   {
-    title: 'Database & Caching',
-    skills: [
-      ['MySQL', 88],
-      ['MongoDB', 76],
-      ['Firebase', 72],
-      ['Redis', 78],
-      ['PostgreSQL', 74],
+    title: 'Frontend',
+    tiers: [
+      { label: 'Primary', tier: 'primary', skills: ['JavaScript', 'Vue.js', 'React', 'HTML5', 'CSS3'] },
+      { label: 'Proficient', tier: 'secondary', skills: ['Next.js'] },
     ],
   },
   {
-    title: 'DevOps & Tools',
-    skills: [
-      ['Docker', 82],
-      ['CI/CD Pipelines', 80],
-      ['Git', 82],
-      ['Server Management', 76],
-      ['Cloud Hosting', 76],
+    title: 'Database',
+    tiers: [
+      { label: 'Primary', tier: 'primary', skills: ['MySQL', 'MongoDB', 'Firebase', 'PostgreSQL', 'Redis'] },
+    ],
+  },
+  {
+    title: 'DevOps & Hosting',
+    tiers: [
+      { label: 'Primary', tier: 'primary', skills: ['cPanel / WHM / Plesk', 'Git', 'Docker', 'CI/CD Pipelines'] },
+      { label: 'Proficient', tier: 'secondary', skills: ['Cloud Hosting'] },
     ],
   },
 ];
 
 onMounted(() => {
-  gsap.from('.skills-title', {
-    clipPath: 'inset(0 100% 0 0)',
-    duration: 0.7,
-    scrollTrigger: { trigger: '.skills-title', start: 'top 75%' },
-  });
-  gsap.utils.toArray('.skill-fill').forEach((bar) => {
-    gsap.fromTo(
-      bar,
-      { scaleX: 0 },
-      {
-        scaleX: 1,
-        duration: 1,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: bar, start: 'top 85%' },
-      },
-    );
-  });
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1 },
+  );
+
+  if (sectionRef.value) {
+    sectionRef.value.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+  }
 });
 </script>
 
 <template>
-  <section id="skills" class="skills section-shell">
-    <div class="section-kicker">
-      <span class="eyebrow">Skills</span>
-      <h2 class="section-title skills-title">Technical arsenal <em>mapped by strength</em></h2>
-      <p>Technologies used to ship secure, scalable, and maintainable applications.</p>
+  <section id="skills" class="skills section-shell" ref="sectionRef">
+    <div class="skills-header reveal">
+      <span class="section-label">Skills</span>
+      <h2 class="section-heading">Technical <em>toolkit</em></h2>
+      <p class="section-subtext">
+        Production-proven technical capabilities across modern backend frameworks, reactive UI libraries, data persistence engines, and cloud infrastructure.
+      </p>
     </div>
-    <div class="skill-groups">
-      <article v-for="group in groups" :key="group.title" class="skill-card glass-card">
-        <h3>{{ group.title }}</h3>
-        <div v-for="[name, value] in group.skills" :key="name" class="skill-row">
-          <div class="skill-meta">
-            <span>{{ name }}</span>
-            <b>{{ value }}%</b>
-          </div>
-          <div class="skill-track">
-            <span class="skill-fill" :style="{ width: `${value}%` }"></span>
+
+    <div class="skills-legend reveal">
+      <span class="skills-legend-item">
+        <span class="skills-legend-dot primary"></span>
+        Primary — daily driver, deep expertise
+      </span>
+      <span class="skills-legend-item">
+        <span class="skills-legend-dot secondary"></span>
+        Proficient — strong working knowledge
+      </span>
+    </div>
+
+    <div class="skills-grid">
+      <article
+        v-for="category in categories"
+        :key="category.title"
+        class="skill-category reveal"
+      >
+        <h3 class="skill-category-title">{{ category.title }}</h3>
+
+        <div
+          v-for="tier in category.tiers"
+          :key="tier.label"
+          class="skill-tier"
+        >
+          <div class="skill-tier-label">{{ tier.label }}</div>
+          <div class="skill-tags">
+            <span
+              v-for="skill in tier.skills"
+              :key="skill"
+              class="pill"
+              :class="`pill-${tier.tier}`"
+            >
+              {{ skill }}
+            </span>
           </div>
         </div>
       </article>

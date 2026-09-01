@@ -1,64 +1,70 @@
 <script setup>
-import { onMounted } from 'vue';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { onMounted, ref } from 'vue';
 
-gsap.registerPlugin(ScrollTrigger);
+const sectionRef = ref(null);
+const base = import.meta.env.BASE_URL;
 
-// UPDATED
 const email = 'jahanzaibzafar.dev63@gmail.com';
-const whatsappNumber = '+92 306 764 8159';
 const whatsappUrl =
   'https://wa.me/923067648159?text=Hi%20Jahanzaib%2C%20I%20found%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project.';
-const upworkUrl = 'https://www.upwork.com/freelancers/jahanzaibzafar01?mp_source=share';
+const cvUrl = `${base}jahanzaib-developer.pdf`;
 
-const socialLinks = [
-  ['Gmail', '✉', `mailto:${email}`],
-  ['LinkedIn', 'in', 'https://linkedin.com/in/jahanzaibzafar'],
-  ['GitHub', 'GH', 'https://github.com/jhanzaibgithub'],
-  ['Upwork', 'Up', upworkUrl],
-  ['WhatsApp', 'WA', whatsappUrl],
+const links = [
+  { label: 'LinkedIn', url: 'https://linkedin.com/in/jahanzaibzafar', icon: 'in' },
+  { label: 'GitHub', url: 'https://github.com/jhanzaibgithub', icon: 'GH' },
+  { label: 'Upwork', url: 'https://www.upwork.com/freelancers/jahanzaibzafar01?mp_source=share', icon: 'Up' },
+  { label: 'WhatsApp', url: whatsappUrl, icon: 'WA' },
 ];
 
 onMounted(() => {
-  gsap.from('.contact-card', {
-    opacity: 0,
-    y: 40,
-    duration: 0.7,
-    scrollTrigger: { trigger: '#contact', start: 'top 70%' },
-  });
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-visible'));
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 },
+  );
+  if (sectionRef.value) observer.observe(sectionRef.value);
 });
 </script>
 
 <template>
-  <section id="contact" class="contact section-shell">
-    <div class="contact-card glass-card">
-      <div>
-        <span class="eyebrow">Contact</span>
-        <h2 class="section-title">Let's build <em>something durable.</em></h2>
-        <p>Open to work opportunities that need thoughtful execution, reliable code, and clear communication.</p>
-        <!-- Contact via Email -->
-        <a class="email-link" :href="`mailto:${email}`">{{ email }}</a>
-        <span class="availability">Available for freelance projects & full-time roles</span>
+  <section id="contact" class="contact section-shell" ref="sectionRef">
+    <div class="contact-inner">
+      <div class="reveal">
+        <span class="section-label">Contact</span>
+        <h2 class="section-heading contact-heading">Let's work <em>together</em></h2>
+        <p class="contact-text">
+          Seeking senior engineering leadership, resilient backend system architecture, or full-stack platform execution? Let's connect to discuss your technical vision.
+        </p>
       </div>
-      <div class="contact-actions">
-        <!-- Social Links -->
-        <div class="social-links">
-          <a
-            v-for="[label, icon, url] in socialLinks"
-            :key="label"
-            class="social-icon-link"
-            :class="`social-${label.toLowerCase()}`"
-            :href="url"
-            :target="label === 'Gmail' ? '' : '_blank'"
-            :rel="label === 'Gmail' ? '' : 'noreferrer'"
-            :aria-label="label"
-          >
-            <span>{{ icon }}</span>
-            <b>{{ label }}</b>
-          </a>
-        </div>
+
+      <a class="contact-email reveal reveal-delay-1" :href="`mailto:${email}`">
+        ✉ {{ email }}
+      </a>
+
+      <div class="contact-links reveal reveal-delay-2">
+        <a
+          v-for="link in links"
+          :key="link.label"
+          class="contact-link"
+          :href="link.url"
+          target="_blank"
+          rel="noreferrer"
+          :aria-label="link.label"
+        >
+          <strong>{{ link.icon }}</strong>
+          {{ link.label }}
+        </a>
       </div>
+
+      <a class="contact-cv reveal reveal-delay-3" :href="cvUrl" download="Jahanzaib-Zafar-CV.pdf">
+        ↓ Download CV
+      </a>
     </div>
   </section>
 </template>

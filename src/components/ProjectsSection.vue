@@ -1,266 +1,196 @@
 <script setup>
-import { computed, onMounted, onBeforeUnmount, ref } from 'vue';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import ProjectModal from './ProjectModal.vue';
-
-gsap.registerPlugin(ScrollTrigger);
+import { onMounted, ref } from 'vue';
 
 const base = import.meta.env.BASE_URL;
-const selectedProject = ref(null);
-const modalOpen = ref(false);
-const currentProjectIndex = ref(0);
-const dragStartX = ref(0);
-const dragDistance = ref(0);
-const isDraggingCarousel = ref(false);
-const suppressProjectClick = ref(false);
+const sectionRef = ref(null);
 
-const projectAssets = (folder, count) => ({
-  thumbnail: `${base}${folder}/1.png`,
-  images: Array.from({ length: Math.max(0, count - 1) }, (_, index) => `${base}${folder}/${index + 2}.png`),
-});
-
-// UPDATED
 const projects = [
   {
-    ...projectAssets('borrowmate', 13),
     title: 'BorrowMate',
+    number: '01',
     url: 'https://borrowmate.heydigital.com.au',
-    github: '#',
-    category: 'Web',
-    label: 'Web App',
-    description:
-      'BorrowMate is a collateral-backed lending platform built for controlled borrower management and operational visibility. It supports borrower tracking, loan approval workflows, repayment monitoring, and admin-side status handling. The interface is structured for staff who need to move quickly between records, review history, and maintain accurate lending activity.',
-    stack: ['Laravel', 'Vue', 'MySQL'],
-    span: 'wide',
+    thumbnail: `${base}borrowmate/1.png`,
+    problem:
+      'Legacy spreadsheet workflows caused data fragmentation, manual tracking errors, and audit risks in collateral-backed lending operations.',
+    decisions:
+      'Architected an enterprise Laravel backend integrated with a reactive Vue.js administrative portal. Engineered relational state-machine models for loan lifecycles, role-based approval gates, and automated repayment calculation engines.',
+    outcome:
+      'Delivered a centralized, audit-compliant financial application that reduced loan processing friction and enabled real-time portfolio management for operational staff.',
+    stack: ['Laravel', 'Vue.js', 'MySQL', 'REST APIs'],
   },
   {
-    ...projectAssets('islegit', 11),
     title: 'IcLegit',
+    number: '02',
     url: 'http://isitlegit.co/',
-    github: '#',
-    category: 'Tool',
-    label: 'Tool',
-    description:
-      'IcLegit is a verification-focused tool for checking and reviewing legitimacy signals through a focused user flow. The project combines dashboard screens, result views, and admin-friendly data handling. It is designed to make review steps clear while keeping the interface fast and practical for repeated checks.',
-    stack: ['Laravel', 'API', 'MySQL'],
-    span: 'tall',
+    thumbnail: `${base}islegit/1.png`,
+    problem:
+      'Business verification teams needed a high-throughput platform to aggregate multiple verification signals and evaluate vendor legitimacy seamlessly.',
+    decisions:
+      'Engineered an API-driven analytical backend using Laravel and custom webhooks. Designed normalized data pipelines to ingest external verification endpoints concurrently with asynchronous worker queues.',
+    outcome:
+      'Accelerated vendor evaluation cycles with instant signal aggregation, interactive analytical dashboards, and structured administrative reporting.',
+    stack: ['Laravel', 'REST APIs', 'MySQL', 'Queue Processing'],
   },
   {
-    ...projectAssets('domain-name-generater', 3),
-    title: 'Domain Name Generator',
-    url: 'https://3sname.com/',
-    github: '#',
-    category: 'Tool',
-    label: 'Tool',
-    description:
-      'Domain Name Generator helps users explore usable name ideas through a clean, focused workflow. The application presents generated options in a simple interface with practical actions for review and selection. It keeps the experience lightweight while supporting a real tool-style use case.',
-    stack: ['Laravel', 'JavaScript', 'API'],
-    span: '',
-  },
-  {
-    ...projectAssets('gifted-texi', 9),
     title: 'Gifted Taxi & Tours',
+    number: '03',
     url: 'https://giftedtaxiandtours.com',
-    category: 'Web',
-    label: 'Booking',
-    description:
-      'Gifted Taxi & Tours is a booking-oriented website for transport and tour services. It presents service information, destination content, and inquiry paths in a way that supports direct customer action. The build focuses on responsive layouts, clear trip discovery, and simple maintenance for business updates.',
-    stack: ['Laravel', 'Booking', 'MySQL'],
-    span: '',
+    thumbnail: `${base}gifted-texi/1.png`,
+    problem:
+      'A regional transport company required an automated customer reservation and dispatch engine capable of real-time route discovery and quote calculation.',
+    decisions:
+      'Developed a custom Laravel booking platform with optimized geolocation query handlers, dynamic pricing matrix algorithms, and mobile-responsive customer inquiry UI.',
+    outcome:
+      'Increased online conversion rates through intuitive booking UX and automated dispatch notifications, eliminating manual telephone scheduling bottlenecks.',
+    stack: ['Laravel', 'MySQL', 'REST APIs', 'Responsive UX'],
   },
   {
-    ...projectAssets('blog_site', 6),
-    title: 'Blog Platform',
-    url: '#',
-    github: 'https://github.com/jhanzaibgithub/Blog-site-Vue-js-Laravel.git',
-    category: 'Web',
-    label: 'Web App',
-    description:
-      'Blog Platform is a content management project with structured posting, listing, and detail screens. It gives admins a straightforward way to manage blog content while keeping the public reading experience clean. The project emphasizes reusable layouts, clear hierarchy, and maintainable backend flows.',
-    stack: ['Laravel', 'MySQL', 'Blade'],
-    span: 'tall',
-  },
-  {
-    ...projectAssets('hosting-panel', 6),
     title: 'Hosting Panel',
+    number: '04',
     url: 'https://hpanel.pixelz360.com.au/',
-    github: '#',
-    category: 'Web',
-    label: 'Panel',
-    description:
-      'Hosting Panel is an admin-style interface for managing hosting-related services and customer records. It includes screens for operational tracking, account information, and workflow visibility. The design is compact, dashboard-oriented, and built for day-to-day management tasks.',
-    stack: ['Laravel', 'MySQL', 'Admin'],
-    span: 'wide',
+    thumbnail: `${base}hosting-panel/1.png`,
+    problem:
+      'Infrastructure administrators lacked a consolidated control panel for provisioning hosting accounts, tracking bandwidth metrics, and handling customer domain assets.',
+    decisions:
+      'Built a dashboard application leveraging Laravel architecture. Designed compact, low-latency UI components for server asset management, billing integration, and system status telemetry.',
+    outcome:
+      'Empowered sysadmins with centralized infrastructure oversight, reducing account onboarding latency and simplifying client management.',
+    stack: ['Laravel', 'MySQL', 'Admin Architecture'],
+  },
+  {
+    title: 'Blog Platform',
+    number: '05',
+    github: 'https://github.com/jhanzaibgithub/Blog-site-Vue-js-Laravel.git',
+    thumbnail: `${base}blog_site/1.png`,
+    problem:
+      'Required an extensible publishing system with granular access delegation, rich media rendering, and SEO-optimized server rendering.',
+    decisions:
+      'Decoupled publishing engine built with Laravel and Blade templates. Implemented optimized content caching layers, dynamic slug routing, and structured JSON-LD schema generation.',
+    outcome:
+      'Shipped an open-source CMS platform featuring clean editorial workflows, fast indexability, and modular component extension patterns.',
+    stack: ['Laravel', 'MySQL', 'Blade', 'SEO Architecture'],
+  },
+  {
+    title: 'Domain Name Generator',
+    number: '06',
+    url: 'https://3sname.com/',
+    thumbnail: `${base}domain-name-generater/1.png`,
+    problem:
+      'Branding agencies required a rapid-fire domain availability and combination lookup engine with sub-second response times.',
+    decisions:
+      'Built a lightweight, asynchronous lookup engine combining Laravel micro-endpoints with vanilla JavaScript client-side rendering and WHOIS API integrations.',
+    outcome:
+      'Delivered a ultra-responsive domain exploration tool executing concurrent API requests with zero page refreshes.',
+    stack: ['Laravel', 'JavaScript', 'WHOIS API', 'Async Fetch'],
   },
 ];
 
-const visibleProjects = computed(() =>
-  Array.from({ length: Math.min(3, projects.length) }, (_, offset) => {
-    const index = (currentProjectIndex.value + offset) % projects.length;
-    return { ...projects[index], originalIndex: index };
-  }),
-);
-
-function nextProjects() {
-  currentProjectIndex.value = (currentProjectIndex.value + 1) % projects.length;
-}
-
-function previousProjects() {
-  currentProjectIndex.value = (currentProjectIndex.value - 1 + projects.length) % projects.length;
-}
-
-function startCarouselDrag(event) {
-  isDraggingCarousel.value = true;
-  dragStartX.value = event.clientX ?? event.touches?.[0]?.clientX ?? 0;
-  dragDistance.value = 0;
-}
-
-function moveCarouselDrag(event) {
-  if (!isDraggingCarousel.value) return;
-  const currentX = event.clientX ?? event.touches?.[0]?.clientX ?? dragStartX.value;
-  dragDistance.value = currentX - dragStartX.value;
-}
-
-function endCarouselDrag() {
-  if (!isDraggingCarousel.value) return;
-  isDraggingCarousel.value = false;
-  if (Math.abs(dragDistance.value) < 48) return;
-  suppressProjectClick.value = true;
-  if (dragDistance.value < 0) nextProjects();
-  if (dragDistance.value > 0) previousProjects();
-  window.setTimeout(() => {
-    suppressProjectClick.value = false;
-  }, 0);
-}
-
-// UPDATED
-function openModal(project) {
-  if (suppressProjectClick.value) return;
-  selectedProject.value = project;
-  modalOpen.value = true;
-}
-
-// UPDATED
-function closeModal() {
-  modalOpen.value = false;
-}
-
-let autoCarouselInterval;
-
 onMounted(() => {
-  // Auto-carousel: rotate projects every 5 seconds
-  autoCarouselInterval = setInterval(() => {
-    if (!isDraggingCarousel.value && !modalOpen.value) {
-      nextProjects();
-    }
-  }, 5000);
-
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        const delay = Number(entry.target.dataset.index) * 80;
-        window.setTimeout(() => entry.target.classList.add('is-visible'), delay);
-        observer.unobserve(entry.target);
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
       });
     },
-    { threshold: 0.16 },
+    { threshold: 0.1 },
   );
-  document.querySelectorAll('.project-card').forEach((card) => observer.observe(card));
 
-  gsap.from('.projects-title', {
-    clipPath: 'inset(0 100% 0 0)',
-    duration: 0.7,
-    scrollTrigger: { trigger: '.projects-title', start: 'top 75%' },
-  });
-});
-
-onBeforeUnmount(() => {
-  if (autoCarouselInterval) {
-    clearInterval(autoCarouselInterval);
+  if (sectionRef.value) {
+    sectionRef.value.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
   }
 });
 </script>
 
 <template>
-  <section id="projects" class="projects section-shell">
-    <div class="section-kicker">
-      <span class="eyebrow">Work</span>
-      <h2 class="section-title projects-title">Selected builds <em>with production weight</em></h2>
-      <p>Real projects spanning ecommerce, booking, lending, web platforms, APIs, and business tools.</p>
-    </div>
-    <div class="projects-carousel">
-      <div class="carousel-head">
-        <span>{{ currentProjectIndex + 1 }} / {{ projects.length }}</span>
-        <div class="carousel-controls" aria-label="Project carousel controls">
-          <button aria-label="Previous projects" @click="previousProjects">&lt;</button>
-          <button aria-label="Next projects" @click="nextProjects">&gt;</button>
-        </div>
-      </div>
-      <div
-        class="carousel-viewport"
-        :class="{ dragging: isDraggingCarousel }"
-        @pointerdown="startCarouselDrag"
-        @pointermove="moveCarouselDrag"
-        @pointerup="endCarouselDrag"
-        @pointercancel="endCarouselDrag"
-        @pointerleave="endCarouselDrag"
-      >
-        <div class="carousel-track">
-          <article
-            v-for="project in visibleProjects"
-            :key="`${project.title}-${currentProjectIndex}`"
-            class="project-card glass-card tilt-card is-visible"
-            :data-index="project.originalIndex"
-            :data-category="project.category"
-            role="button"
-            tabindex="0"
-            @click="openModal(project)"
-            @keydown.enter.prevent="openModal(project)"
-          >
-            <div class="project-visual">
-              <img :src="project.thumbnail" :alt="`${project.title} thumbnail`" loading="lazy" draggable="false" />
-            </div>
-            <span class="project-index">{{ String(project.originalIndex + 1).padStart(2, '0') }}</span>
-            <div class="project-actions">
-              <a :href="project.url" target="_blank" rel="noreferrer" aria-label="Live demo" @click.stop>Live</a>
-            </div>
-            <div class="project-info">
-              <div class="project-meta">
-                <span class="project-label">{{ project.label }}</span>
-                <span>{{ project.category }}</span>
-              </div>
-              <h3>{{ project.title }}</h3>
-              <p>{{ project.description }}</p>
-              <div class="pills">
-                <span v-for="tech in project.stack" :key="tech">{{ tech }}</span>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-      <div class="carousel-dots" aria-label="Project carousel position">
-        <button
-          v-for="(_, index) in projects"
-          :key="index"
-          :class="{ active: index === currentProjectIndex }"
-          :aria-label="`Show project set starting at ${index + 1}`"
-          @click="currentProjectIndex = index"
-        ></button>
-      </div>
-      <div class="more-work-row">
-        <a
-          class="btn primary more-work-btn"
-          href="https://www.upwork.com/freelancers/~017d9280669d695f18?viewMode=1&mp_source=share"
-          target="_blank"
-          rel="noreferrer"
-        >
-          More work? Check Upwork Profile
-        </a>
-      </div>
+  <section id="projects" class="projects section-shell" ref="sectionRef">
+    <div class="projects-header reveal">
+      <span class="section-label">Selected Work</span>
+      <h2 class="section-heading">Projects with <em>production weight</em></h2>
+      <p class="section-subtext">
+        Real projects spanning lending platforms, booking systems, admin panels, APIs, and business tools.
+      </p>
     </div>
 
-    <ProjectModal :is-open="modalOpen" :project="selectedProject" @close="closeModal" />
+    <div class="project-list">
+      <article
+        v-for="(project, index) in projects"
+        :key="project.title"
+        class="project-item reveal"
+        :class="{ alt: index % 2 === 1 }"
+      >
+        <div class="project-visual">
+          <img
+            :src="project.thumbnail"
+            :alt="`${project.title} — project screenshot`"
+            loading="lazy"
+            width="560"
+            height="350"
+          />
+        </div>
+
+        <div class="project-content">
+          <span class="project-number">Project {{ project.number }}</span>
+          <h3 class="project-name">{{ project.title }}</h3>
+
+          <div class="project-story">
+            <div>
+              <span class="project-story-label">The Problem</span>
+              <p class="project-story-text">{{ project.problem }}</p>
+            </div>
+            <div>
+              <span class="project-story-label">Technical Decisions</span>
+              <p class="project-story-text">{{ project.decisions }}</p>
+            </div>
+            <div>
+              <span class="project-story-label">Outcome</span>
+              <p class="project-story-text">{{ project.outcome }}</p>
+            </div>
+          </div>
+
+          <div class="project-stack">
+            <span v-for="tech in project.stack" :key="tech" class="pill pill-muted">{{ tech }}</span>
+          </div>
+
+          <div class="project-links">
+            <a
+              v-if="project.url"
+              :href="project.url"
+              target="_blank"
+              rel="noreferrer"
+              class="project-link"
+              aria-label="View live site"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Live Site
+            </a>
+            <a
+              v-if="project.github"
+              :href="project.github"
+              target="_blank"
+              rel="noreferrer"
+              class="project-link"
+              aria-label="View source code"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              Source
+            </a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="projects-more">
+      <a
+        class="btn btn-outline"
+        href="https://www.upwork.com/freelancers/~017d9280669d695f18?viewMode=1&mp_source=share"
+        target="_blank"
+        rel="noreferrer"
+      >
+        More work on Upwork →
+      </a>
+    </div>
   </section>
 </template>
