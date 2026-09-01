@@ -6,9 +6,11 @@ import HeroSection from './components/HeroSection.vue';
 import AboutSection from './components/AboutSection.vue';
 import ProcessSection from './components/ProcessSection.vue';
 import ProjectsSection from './components/ProjectsSection.vue';
+import TestimonialsSection from './components/TestimonialsSection.vue';
 import SkillsSection from './components/SkillsSection.vue';
 import TimelineSection from './components/TimelineSection.vue';
 import ContactSection from './components/ContactSection.vue';
+import PreLoader from './components/PreLoader.vue';
 
 const siteUrl = 'https://jhanzaibgithub.github.io/jahanzaibzafar/';
 const profileImage = `${siteUrl}profile-pic.png`;
@@ -141,6 +143,7 @@ useHead(
 </script>
 
 <template>
+  <PreLoader />
   <a href="#home" class="skip-link">Skip to content</a>
   <NavBar />
   <main id="main-content">
@@ -148,6 +151,7 @@ useHead(
     <AboutSection />
     <ProcessSection />
     <ProjectsSection />
+    <TestimonialsSection />
     <SkillsSection />
     <TimelineSection />
     <ContactSection />

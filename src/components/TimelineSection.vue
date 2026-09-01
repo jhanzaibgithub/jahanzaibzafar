@@ -25,7 +25,7 @@ const entries = [
     tags: ['React', 'Vue.js', 'Laravel', 'Node.js', 'MongoDB', 'Firebase'],
   },
   {
-    range: 'March 2023 – June 2025',
+    range: 'July 2023 – August 2025',
     role: 'Full Stack Developer',
     company: 'Crexed Software Company',
     type: 'work',
@@ -39,7 +39,7 @@ const entries = [
     tags: ['HTML', 'CSS', 'JavaScript', 'MERN', 'Laravel', 'MySQL', 'REST APIs', 'Stripe'],
   },
   {
-    range: 'July 2021 – July 2022',
+    range: 'July 2021 – July 2023',
     role: 'PHP / Laravel Developer',
     company: 'Pixelz360',
     type: 'work',
@@ -53,7 +53,7 @@ const entries = [
     tags: ['HTML', 'CSS', 'Bootstrap', 'PHP', 'JavaScript', 'Laravel', 'Git', 'cPanel/WHM'],
   },
   {
-    range: '2016 – 2020',
+    range: '2020 – 2024',
     role: 'Bachelor of Computer Science (BCompSc)',
     company: 'Islamia University Bahawalpur (IUB)',
     type: 'education',

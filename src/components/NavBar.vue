@@ -12,6 +12,7 @@ const links = [
   ['about', 'About'],
   ['process', 'Process'],
   ['projects', 'Work'],
+  ['testimonials', 'Reviews'],
   ['skills', 'Skills'],
   ['experience', 'Experience'],
   ['contact', 'Contact'],

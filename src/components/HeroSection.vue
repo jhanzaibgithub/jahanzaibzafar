@@ -23,7 +23,8 @@ onMounted(() => {
     .from('.hero-tagline', { opacity: 0, y: 20, duration: 0.5 }, '-=0.3')
     .from('.hero-meta', { opacity: 0, y: 16, duration: 0.4 }, '-=0.2')
     .from('.hero-actions .btn', { opacity: 0, y: 16, duration: 0.4, stagger: 0.1 }, '-=0.1')
-    .from('.hero-photo-frame', { opacity: 0, scale: 0.95, duration: 0.7 }, '-=0.5');
+    .from('.hero-photo-wrapper', { opacity: 0, scale: 0.92, duration: 0.8 }, '-=0.5')
+    .from('.hero-badge-float', { opacity: 0, y: 20, duration: 0.5 }, '-=0.3');
 });
 </script>
 
@@ -48,17 +49,25 @@ onMounted(() => {
         <button class="btn btn-outline" @click="scrollToContact">Get in Touch</button>
       </div>
     </div>
+
     <div class="hero-photo">
-      <figure class="hero-photo-frame">
-        <img
-          :src="`${base}profile-pic.png`"
-          alt="Jahanzaib Zafar — Full Stack Developer"
-          width="360"
-          height="450"
-          loading="eager"
-          fetchpriority="high"
-        />
-      </figure>
+      <div class="hero-photo-wrapper">
+        <div class="hero-photo-bg-glow"></div>
+        <figure class="hero-photo-frame">
+          <img
+            :src="`${base}profile-pic-nobg.png`"
+            alt="Jahanzaib Zafar — Senior Full Stack Engineer"
+            width="360"
+            height="450"
+            loading="eager"
+            fetchpriority="high"
+          />
+        </figure>
+        <div class="hero-badge-float">
+          <span class="hero-badge-dot"></span>
+          <span class="hero-badge-text">Available for Senior Roles &amp; Contracts</span>
+        </div>
+      </div>
     </div>
   </section>
 </template>

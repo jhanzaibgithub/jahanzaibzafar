@@ -13,8 +13,7 @@ const categories = [
   {
     title: 'Frontend',
     tiers: [
-      { label: 'Primary', tier: 'primary', skills: ['JavaScript', 'Vue.js', 'React', 'HTML5', 'CSS3'] },
-      { label: 'Proficient', tier: 'secondary', skills: ['Next.js'] },
+      { label: 'Primary', tier: 'primary', skills: ['JavaScript', 'Next.js', 'Vue.js', 'React', 'Tailwind CSS', 'Bootstrap', 'HTML5', 'CSS3'] },
     ],
   },
   {
