@@ -17,8 +17,8 @@
   --primary-border: rgba(194, 96, 62, 0.25);
   --secondary: #2B4141;
   --secondary-soft: rgba(43, 65, 65, 0.10);
-  --text: #1A1A1A;
-  --text-muted: #6B6560;
+  --text: #0D0D0D;
+  --text-muted: #2E2B28;
   --border: #E5DFD7;
   --border-strong: #D4CEC5;
   --shadow: 0 2px 16px rgba(28, 24, 20, 0.06);
@@ -298,8 +298,9 @@ h1, h2, h3 {
 
 .pill-muted {
   background: var(--surface-alt);
-  color: var(--text-muted);
-  border: 1px solid var(--border);
+  color: var(--text);
+  font-weight: 700;
+  border: 1px solid var(--border-strong);
 }
 
 
