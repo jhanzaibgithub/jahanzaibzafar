@@ -13,7 +13,7 @@ import ContactSection from './components/ContactSection.vue';
 import PreLoader from './components/PreLoader.vue';
 
 const siteUrl = 'https://jhanzaibgithub.github.io/jahanzaibzafar/';
-const profileImage = `${siteUrl}profile-pic.png`;
+const profileImage = `${siteUrl}profile-pic-nobg.png`;
 const cvUrl = `${siteUrl}jahanzaib-developer.pdf`;
 const githubUrl = 'https://github.com/jhanzaibgithub';
 const linkedInUrl = 'https://linkedin.com/in/jahanzaibzafar';
