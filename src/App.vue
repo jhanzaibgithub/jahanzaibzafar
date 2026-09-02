@@ -108,7 +108,7 @@ useHead(
           jobTitle: 'Full Stack Developer',
           url: siteUrl,
           image: profileImage,
-          email: 'mailto:jahanzaibzafar.dev63@gmail.com',
+          email: 'mailto:jahanzaibryk2020@gmail.com',
           description,
           knowsAbout: [
             'Laravel', 'PHP', 'Vue.js', 'React', 'Node.js', 'MERN Stack',

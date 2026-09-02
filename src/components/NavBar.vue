@@ -7,6 +7,9 @@ const activeSection = ref('home');
 let ticking = false;
 let observer;
 
+const base = import.meta.env.BASE_URL;
+const cvUrl = `${base}jahanzaib-developer.pdf`;
+
 const links = [
   ['home', 'Home'],
   ['about', 'About'],
@@ -75,7 +78,10 @@ onBeforeUnmount(() => {
         </a>
       </nav>
 
-      <button class="btn btn-primary nav-cta" @click="goTo('contact')">Get in Touch</button>
+      <div class="nav-actions">
+        <a class="btn btn-outline nav-cv-btn" :href="cvUrl" download="Jahanzaib-Zafar-CV.pdf">Download CV</a>
+        <button class="btn btn-primary nav-cta" @click="goTo('contact')">Get in Touch</button>
+      </div>
 
       <button
         class="menu-btn"
@@ -97,6 +103,7 @@ onBeforeUnmount(() => {
       >
         {{ label }}
       </a>
+      <a class="mobile-cv-cta" :href="cvUrl" download="Jahanzaib-Zafar-CV.pdf">↓ Download CV</a>
       <a class="mobile-cta" href="#contact" @click.prevent="goTo('contact')">Get in Touch</a>
     </nav>
   </header>
