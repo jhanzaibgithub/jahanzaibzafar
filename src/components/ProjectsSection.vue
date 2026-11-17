@@ -57,38 +57,38 @@ const projects = [
   },
   {
     id: 'pikup',
-    title: 'Pikup Logistics',
+    title: 'Pikup',
     number: '02',
-    category: 'Logistics SaaS',
-    tagline: 'On-demand delivery dispatching & real-time parcel tracking',
+    category: 'Restaurant SaaS',
+    tagline: 'Multi-vendor restaurant SaaS — customer, restaurant & delivery apps',
     url: 'https://pikup.site/',
     heroImage: `${base}portfolio-assets/pikup/pikup-home.png`,
     thumbnail: `${base}portfolio-assets/pikup/pikup-home.png`,
     overview:
-      'Pikup is an on-demand logistics and transport web application designed to streamline intracity courier requests, freight vehicle selection, and real-time package delivery tracking for businesses and consumers.',
+      'Pikup is a multi-vendor restaurant SaaS platform — a multi-tenant API powering customer, restaurant and delivery-partner apps for food delivery, with table reservations, commission-based restaurant onboarding and GPS-based live order tracking.',
     productWorkflow:
-      'Customers enter pickup and dropoff addresses, select appropriate vehicle types (pickup trucks, vans, box trucks), receive automated fare estimates, and submit delivery requests. Dispatchers and drivers monitor active shipments via an interactive logistics dashboard.',
+      'Customers browse restaurants and place orders, restaurants manage menus and incoming orders, and delivery partners pick up and deliver — with live GPS order tracking across the whole multi-role app ecosystem.',
     problem:
-      'Businesses and marketplace sellers required an instant, reliable way to schedule local freight moves without long phone calls or rigid pricing.',
+      'Restaurants and food-delivery operators needed one platform to run customer ordering, restaurant management and delivery tracking — without juggling separate tools.',
     solution:
-      'Built a Next.js frontend styled with Tailwind CSS, backed by a Node.js API layer handling distance calculation, driver dispatch logic, and real-time shipment status updates.',
+      'Built a multi-tenant SaaS REST API powering the customer, restaurant and delivery-partner apps, with table reservations, commission-based restaurant onboarding at scale, and GPS-based live order tracking across a distributed, multi-role ecosystem.',
     myContribution:
-      'Developed Node.js REST API services for pickup booking creation, freight pricing estimation, and status management. Designed responsive Next.js frontend interfaces using Tailwind CSS.',
+      'Built the multi-tenant SaaS REST API for customer, restaurant and delivery-partner apps. Implemented table reservations, commission-based restaurant onboarding and GPS-based live order tracking.',
     features: [
-      'On-Demand Courier & Vehicle Request Workflow',
-      'Real-Time Parcel & Shipment Tracking Interface',
-      'Vehicle Classification & Capacity Selection',
-      'Distance-Based Quote Calculation Logic',
-      'Tailwind CSS Responsive Dashboard UI'
+      'Multi-Tenant SaaS REST API',
+      'Customer, Restaurant & Delivery-Partner Apps',
+      'Table Reservations',
+      'Commission-Based Restaurant Onboarding',
+      'GPS-Based Live Order Tracking'
     ],
     stackGrouped: {
       'Backend & API': ['Node.js API'],
       'Frontend': ['Next.js'],
       'Styling': ['Tailwind CSS']
     },
-    stack: ['Node.js API', 'Next.js', 'Tailwind CSS', 'Logistics API'],
+    stack: ['Node.js API', 'Next.js', 'Tailwind CSS', 'REST APIs'],
     gallery: [
-      { src: `${base}portfolio-assets/pikup/pikup-home.png`, caption: 'Pikup Dispatch Dashboard & Tracking Interface' },
+      { src: `${base}portfolio-assets/pikup/pikup-home.png`, caption: 'Pikup Food Delivery — Customer, Restaurant & Delivery Apps' },
     ]
   },
   {
@@ -203,26 +203,27 @@ const projects = [
     id: 'borrowmate',
     title: 'BorrowMate',
     number: '06',
-    category: 'Fintech Platform',
-    tagline: 'Collateral-backed lending & automated loan approval portal',
+    category: 'Rental Marketplace',
+    tagline: 'Multi-vendor rental marketplace — tools, electronics, property & event gear',
     url: 'https://borrowmate.heydigital.com.au',
     heroImage: `${base}borrowmate/1.png`,
     thumbnail: `${base}borrowmate/1.png`,
     overview:
-      'BorrowMate is a collateral-backed lending platform built for controlled borrower management, loan lifecycle approval workflows, and administrative financial visibility.',
+      'BorrowMate is a multi-vendor rental marketplace — a multi-category platform for renting tools, electronics, property and event gear, with search, booking and wishlist, Till Payments for transactions, Weavy for real-time chat and ConnectID for digital identity verification.',
     productWorkflow:
-      'Lending staff process borrower profiles, review collateral valuation reports, manage multi-stage approval gates, and track automated repayment schedules through a centralized dashboard.',
+      'Users search and book items across categories, owners list their items, and payments, live chat and identity verification run inside the platform — secure peer-to-peer commerce at national scale.',
     problem:
-      'Legacy spreadsheet workflows caused data fragmentation, manual tracking errors, and audit risks in collateral-backed lending operations.',
+      'Renting tools, electronics, property and event gear peer-to-peer needed one trusted marketplace — with search, booking, secure payments, live chat and identity checks in one place.',
     solution:
-      'Architected an enterprise Laravel backend integrated with a reactive Vue.js administrative portal. Engineered relational state-machine models for loan lifecycles, role-based approval gates, and automated repayment calculation engines.',
+      'Built the backend and frontend for a multi-category rental marketplace with search, booking and wishlist across the platform, integrating Till Payments for transactions, Weavy for real-time chat and ConnectID for digital identity verification.',
     myContribution:
-      'Architected Laravel backend APIs, loan lifecycle state machines, and Vue.js administrative views.',
+      'Built the backend and frontend for the rental marketplace. Implemented search, booking and wishlist, and integrated Till Payments, Weavy chat and ConnectID identity verification.',
     features: [
-      'Collateral-Backed Loan Approval Lifecycle Workflows',
-      'Borrower Risk Tracking & Repayment Calculators',
-      'Role-Based Administrative Portal (Vue.js)',
-      'Audit Logging & Relational Database Schemas'
+      'Multi-Category Rental Marketplace',
+      'Search, Booking & Wishlist',
+      'Till Payments Integration',
+      'Weavy Real-Time Chat',
+      'ConnectID Identity Verification'
     ],
     stackGrouped: {
       'Backend': ['Laravel', 'PHP'],
