@@ -39,7 +39,7 @@ onMounted(() => {
       <div class="hero-meta">
         <span>Senior Full Stack Engineer</span>
         <span class="hero-meta-dot"></span>
-        <span>3+ Years Experience</span>
+        <span>5+ Years Experience</span>
         <span class="hero-meta-dot"></span>
         <span>3 Corporate Roles + Lead Freelance</span>
       </div>
