@@ -4,7 +4,7 @@ import { onMounted, ref } from 'vue';
 const sectionRef = ref(null);
 
 const stats = [
-  ['3+', 'Years Experience'],
+  ['5+', 'Years Experience'],
   ['30+', 'Projects Delivered'],
   ['25+', 'Clients Served'],
   ['3', 'Companies'],
@@ -12,7 +12,7 @@ const stats = [
 
 const entries = [
   {
-    range: 'October 2025 – Present',
+    range: 'October 2025 – August 2026',
     role: 'Full Stack Developer',
     company: 'Dcodax Technology PVT LTD',
     type: 'current',
@@ -25,7 +25,7 @@ const entries = [
     tags: ['React', 'Vue.js', 'Laravel', 'Node.js', 'MongoDB', 'Firebase'],
   },
   {
-    range: 'July 2023 – August 2025',
+    range: 'October 2024 – September 2025',
     role: 'Full Stack Developer',
     company: 'Crexed Software Company',
     type: 'work',
@@ -39,7 +39,7 @@ const entries = [
     tags: ['HTML', 'CSS', 'JavaScript', 'MERN', 'Laravel', 'MySQL', 'REST APIs', 'Stripe'],
   },
   {
-    range: 'July 2021 – July 2023',
+    range: 'August 2022 – June 2024',
     role: 'PHP / Laravel Developer',
     company: 'Pixelz360',
     type: 'work',
